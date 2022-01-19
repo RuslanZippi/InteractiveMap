@@ -5,28 +5,24 @@ body{
 #div1{
     position: relative;
     text-align: center;
-    border: ridge 3px red;
 }
 #svg1{
     background-image: url('../image/sklad.png');
     background-size: cover;
-    border: ridge 4px blue;
 }
 .square{
     opacity: 0.5;
     cursor: pointer;
-    /*fill: cyan;*/
+    fill: #fff8e7;
 }
 .square:hover{
     fill: skyblue;
 }
-.square.active {
-    fill: #FF8C0B
-}
+
 #svg2{
     background-image: url('../image/stand.png');
     background-size: cover;
-    border: ridge 4px blue;
+    border: ridge 4px #e6e6f2;
 
 }
 

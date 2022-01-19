@@ -15,47 +15,44 @@
 </head>
 <body id="body">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Кладовка</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+            <a class="nav-item nav-link active" href="#">Карта</a>
+            <a class="nav-item nav-link" href="#">Учет склада</a>
+            <a class="nav-item nav-link" href="#">Управление</a>
         </div>
     </div>
 </nav>
 <div class="container">
-    <div id="div1" class="text-center back" th:onclick="viewDiv()">
+    <div id="div1" class="text-center back">
         <!--        <img id="image1" th:src="@{image/map.png}" alt="карта мира" height="600" width="800"/>-->
         <svg id="svg1" display="inline" width="600" height="800">
-            <rect th:onclick="viewDiv2()" class="square" x="61" y="546" width="76" height="116"
-                  fill="#fff8e7"/>
-            <rect th:onclick="viewDiv2()" class="square" x="61" y="397.5" width="76" height="116"
-                  fill="#fff8e7"/>
-            <rect th:onclick="viewDiv2()" class="square" x="61" y="248.5" width="76" height="116"
-                  fill="#fff8e7"/>
-            <rect th:onclick="viewDiv2()" class="square" x="190" y="694" width="115" height="77"
-                  fill="#fff8e7"/>
-            <rect th:onclick="viewDiv2()" class="square" x="348.5" y="694" width="115" height="77"
-                  fill="#fff8e7"/>
-            <rect th:onclick="viewDiv2()" class="square" x="397.5" y="21.5" width="116" height="66"
-                  fill="#fff8e7"/>
-            <rect th:onclick="viewDiv2()" class="square" x="219.5" y="21.5" width="115" height="66"
-                  fill="#fff8e7"/>
-            <rect th:onclick="viewDiv2()" class="square" x="497" y="150" width="66" height="116"
-                  fill="#fff8e7"/>
-            <rect th:onclick="viewDiv2()" class="square" x="497" y="447" width="66" height="116"
-                  fill="#fff8e7"/>
+            <rect th:onclick="viewDiv2()" class="square" x="62" y="551.5" width="76" height="116"
+            />
+            <rect th:onclick="viewDiv2()" class="square" x="62" y="402" width="76" height="116"
+            />
+            <rect th:onclick="viewDiv2()" class="square" x="62" y="252" width="76" height="116"
+            />
+            <rect th:onclick="viewDiv2()" class="square" x="192.5" y="701" width="115" height="77"
+            />
+            <rect th:onclick="viewDiv2()" class="square" x="352.5" y="701" width="115" height="77"
+            />
+            <rect th:onclick="viewDiv2()" class="square" x="401.5" y="22.5" width="116" height="66"
+            />
+            <rect th:onclick="viewDiv2()" class="square" x="222.5" y="22.5" width="115" height="66"
+            />
+            <rect th:onclick="viewDiv2()" class="square" x="501.5" y="152" width="66" height="116"
+            />
+            <rect th:onclick="viewDiv2()" class="square" x="501.5" y="451.5" width="66" height="116"
+            />
         </svg>
 
         <svg id="svg2" display="none" width="600" height="600">
-            <!--            <rect th:onclick="sendData()" class="square1" x="0" y="0" width="600" height="600"-->
-            <!--                  fill="skyblue"/>-->
             <polygon class="square" points="
                67.5,484
                 183,484
