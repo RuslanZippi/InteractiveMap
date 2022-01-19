@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.logging.Logger;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/map")
 public class MainController {
 
     Logger logger = Logger.getLogger(MainController.class.getName());

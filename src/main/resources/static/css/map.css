@@ -1,44 +1,6 @@
-.map
-{
-    position: absolute;
-    text-align: center;
-    left:10%;
-    top:5%;
-}
-svg
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-}
-path
-{
-    opacity: 0.4;
-    fill: blue;
-    cursor: pointer;
-    transition: 0.3s;
-}
+
 path:hover
 {
     opacity: 0.8;
     transition: 0.3s;
-}
-
-.map2
-{
-    position: absolute;
-    text-align: center;
-    left: 30%;
-    top: 5%;
-
-}
-svg
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
 }

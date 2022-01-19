@@ -13,8 +13,11 @@ function sendData() {
         console.log(xhr.response);
         listProduct = xhr.response;
         console.log(listProduct.length)
-        createTable(listProduct);
-
+        if (listProduct.length === 0) {
+            alert("Пустая полка")
+        } else {
+            createTable(listProduct);
+        }
 
     }
 
@@ -35,10 +38,8 @@ function createTable(list) {
     table.appendChild(thead);
     table.appendChild(tbody);
 
-// Adding the entire table to the body tag
-    document.getElementById('body').appendChild(table);
+    document.getElementById('table').appendChild(table);
 
-// Creating and adding data to first row of the table
     let row_1 = document.createElement('tr');
     let heading_1 = document.createElement('th');
     heading_1.innerHTML = "№";
@@ -52,27 +53,12 @@ function createTable(list) {
     row_1.appendChild(heading_2);
     row_1.appendChild(heading_3);
     thead.appendChild(row_1);
-// Creating and adding data to second row of the table
 
 
-    // let row_2 = document.createElement('tr');
-    // let row_2_data_1 = document.createElement('td');
-    // var link = document.createElement('a');
-    //
-    // link.href = 'http://google.ru';
-    // link.appendChild(document.createTextNode('ссылка'));
-    // row_2_data_1.appendChild(link);
-//row_2_data_1.innerHTML = "1.";
-//     let row_2_data_2 = document.createElement('td');
-//     row_2_data_2.innerHTML = "James Clerk";
-//     let row_2_data_3 = document.createElement('td');
-//     row_2_data_3.innerHTML = "Netflix";
-
-
-    for (let x = 0; x <list.length; x++){
+    for (let x = 0; x < list.length; x++) {
 
         let row_data = document.createElement('td');
-        row_data.innerHTML = x+1;
+        row_data.innerHTML = x + 1;
 
         var row = document.createElement('tr');
         let row_data_1 = document.createElement('td');
