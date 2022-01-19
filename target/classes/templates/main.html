@@ -34,32 +34,120 @@
         <!--        <img id="image1" th:src="@{image/map.png}" alt="карта мира" height="600" width="800"/>-->
         <svg id="svg1" display="inline" width="600" height="800">
             <rect th:onclick="viewDiv2()" class="square" x="61" y="546" width="76" height="116"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
             <rect th:onclick="viewDiv2()" class="square" x="61" y="397.5" width="76" height="116"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
             <rect th:onclick="viewDiv2()" class="square" x="61" y="248.5" width="76" height="116"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
             <rect th:onclick="viewDiv2()" class="square" x="190" y="694" width="115" height="77"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
             <rect th:onclick="viewDiv2()" class="square" x="348.5" y="694" width="115" height="77"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
             <rect th:onclick="viewDiv2()" class="square" x="397.5" y="21.5" width="116" height="66"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
             <rect th:onclick="viewDiv2()" class="square" x="219.5" y="21.5" width="115" height="66"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
             <rect th:onclick="viewDiv2()" class="square" x="497" y="150" width="66" height="116"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
             <rect th:onclick="viewDiv2()" class="square" x="497" y="447" width="66" height="116"
-                  fill="#fff8e7"  />
+                  fill="#fff8e7"/>
         </svg>
 
-        <svg id="div2" display="none"  width="600" height="600">
-            <rect th:onclick="sendData()" class="square1" x="0" y="0" width="600" height="600"
-                  fill="skyblue"/>
-            <rect class="square" x="50" y="50" width="220" height="130"
-                  fill="skyblue" stroke="steelblue" stroke-width="5"/>
-            <rect class="square" x="20" y="20" width="220" height="130"
-                  fill="red" stroke="steelblue" stroke-width="5"/>
+        <svg id="svg2" display="none" width="600" height="600">
+            <!--            <rect th:onclick="sendData()" class="square1" x="0" y="0" width="600" height="600"-->
+            <!--                  fill="skyblue"/>-->
+            <polygon class="square" points="
+               67.5,484
+                183,484
+                 183,462
+                  158,462
+                   158,428
+                    102,428
+                     102,452.5
+                      67.5,452.5"></polygon>
+            <polygon class="square" points="
+            245.5,484
+            361,484
+            361,462
+            336,462
+            336,428
+            280,428
+            280,452.5
+            245.5,452.5
+                   "></polygon>
+            <polygon class="square" points="
+            411.5,484
+            527,484
+            527,462
+            502,462
+            502,428
+            445.5,428
+            445.5,452.5
+            411.5,452.5
+                   "></polygon>
+
+
+            <polygon class="square" points="
+               68.5,331
+                183,331
+                 183,309
+                  158,309
+                   158,275
+                    102,275
+                     102,299.5
+                      68.5,299.5"></polygon>
+            <polygon class="square" points="
+            246.5,331
+            361,331
+            361,309
+            336,309
+            336,275
+            280,275
+            280,299.5
+            246.5,299.5
+                   "></polygon>
+            <polygon class="square" points="
+            411.5,331
+            527,331
+            527,309
+            502,309
+            502,275
+            445.5,275
+            445.4,299.5
+            411.5,299.5
+                   "></polygon>
+
+
+            <polygon class="square" points="
+               68,176
+                182,176
+                 182,154
+                  158,154
+                   158,120
+                    101,120
+                     101,144.5
+                      68,144.5"></polygon>
+            <polygon class="square" points="
+            246.5,176
+            361,176
+            361,154
+            336,154
+            336,120
+            280,120
+            280,144.5
+            246.5,144.5
+                   "></polygon>
+            <polygon class="square" points="
+            411.5,176
+            527,176
+            527,154
+            502,154
+            502,120
+            445.5,120
+            445.4,144.5
+            411.5,144.5
+                   "></polygon>
+
         </svg>
     </div>
     <div class="table"></div>

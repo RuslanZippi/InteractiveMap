@@ -1,8 +1,8 @@
 function viewDiv2() {
-    if (document.getElementById("div2").style.display === "inline") {
-        document.getElementById("div2").style.display = "none";
+    if (document.getElementById("svg2").style.display === "inline") {
+        document.getElementById("svg2").style.display = "none";
     } else {
-        document.getElementById("div2").style.display = "inline";
+        document.getElementById("svg2").style.display = "inline";
 
     }
 }

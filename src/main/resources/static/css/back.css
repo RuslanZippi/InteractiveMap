@@ -23,7 +23,10 @@ body{
 .square.active {
     fill: #FF8C0B
 }
-#div2{
+#svg2{
+    background-image: url('../image/stand.png');
+    background-size: cover;
+    border: ridge 4px blue;
 
 }
 
