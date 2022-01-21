@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -18,14 +19,16 @@ public class GettingProductListService {
 
     public List<ProductResponse> getProductByPosition(String position) {
         List<ProductResponse> responseList = new ArrayList<>();
-
-        logger.info("ID after parse: " + (parseId(position)));
         int id = parseId(position);
-//        List<ShelfProduct> list = shelfProductRep.findAllByShelfId(id);
-        Iterable<ShelfProduct> list2 = shelfProductRep.findAll();
+        List<ShelfProduct> list = shelfProductRep.findByShelfId(id);
 
-//        list.forEach(x-> logger.info("product: " + x));
-        list2.forEach(x-> logger.info("productALL: " + x));
+        logger.info("size: " + list.size());
+        int x = 1;
+        for (ShelfProduct shelfProduct : list) {
+            responseList.add(new ProductResponse(shelfProduct.getProduct().getName(), shelfProduct.getCount(), x));
+            x++;
+        }
+//        list2.forEach(x-> logger.info("productALL: " + x));
         return responseList;
     }
 

@@ -16,6 +16,6 @@ public class Stand {
     private String name;
 
     @OneToMany(mappedBy = "stand")
-    private List<Shelf> shelfList;
+    private List<ShelfStand> shelfStands;
 
 }

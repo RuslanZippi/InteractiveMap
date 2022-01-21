@@ -15,13 +15,10 @@ public class Shelf {
 
     private String name;
 
-    @ManyToOne
-    private Stand stand;
+    @OneToMany(mappedBy = "shelf")
+    private List<ShelfStand> shelfStands;
 
-    @ManyToMany
-    @JoinTable(name = "shelf_product_count",
-    joinColumns = @JoinColumn(name = "shelf_id"),
-    inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> productList;
+    @OneToMany(mappedBy = "shelf")
+    private List<ShelfProduct> shelfProductList;
 
 }

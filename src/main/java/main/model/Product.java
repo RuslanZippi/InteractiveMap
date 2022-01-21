@@ -28,9 +28,6 @@ public class Product {
     @ManyToMany
     private List<Storage> storageList;
 
-    @ManyToMany
-    @JoinTable(name = "shelf_product_count",
-    joinColumns = @JoinColumn(name = "product_id"),
-    inverseJoinColumns = @JoinColumn(name = "shelf_id"))
-    private List<Shelf> shelfList;
+    @OneToMany(mappedBy = "product")
+    private List<ShelfProduct> shelfProductList;
 }

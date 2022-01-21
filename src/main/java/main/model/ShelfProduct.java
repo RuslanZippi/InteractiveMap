@@ -9,17 +9,19 @@ import javax.persistence.*;
 @Table(name = "shelf_product_count")
 public class ShelfProduct {
 
-    @Id
-    private int id;
+    @EmbeddedId
+    private ShelfProductS id;
 
 
     @ManyToOne
-    @JoinColumn(name = "shelf_id")
+    @MapsId("shelf_id")
     private Shelf shelf;
 
+
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @MapsId("product_id")
     private Product product;
 
+    @Column
     private int count;
 }

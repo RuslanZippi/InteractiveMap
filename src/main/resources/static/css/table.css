@@ -1,0 +1,26 @@
+.tableStyle{
+    border: 1px solid #eee;
+    table-layout: fixed;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.tableStyle th {
+    font-weight: bold;
+    padding: 5px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+}
+.tableStyle td{
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    text-align: left;
+}
+#firstColumn{
+    width: 20px;
+}
+.tableStyle tbody tr:nth-child(odd){
+    background: #fff;
+}
+.tableStyle tbody tr:nth-child(even){
+    background: #F7F7F7;
+}

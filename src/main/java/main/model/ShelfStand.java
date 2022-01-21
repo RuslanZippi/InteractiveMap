@@ -7,17 +7,18 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "shelf_product_count")
+@Table(name = "shelf_stand")
 public class ShelfStand {
 
-    @Id
-    private int id;
+    @EmbeddedId
+    private ShelfStandS id;
 
     @ManyToOne
-    @JoinColumn(name = "shelf_id")
+    @MapsId("shelfId")
     private Shelf shelf;
 
+
     @ManyToOne
-    @JoinColumn(name = "stand_id")
+    @MapsId("standId")
     private Stand stand;
 }

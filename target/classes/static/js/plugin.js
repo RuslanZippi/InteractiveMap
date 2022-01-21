@@ -1,7 +1,7 @@
 var listSvg = new Array();
 var listParent = new Array();
 var listParentPol = new Array();
-var listPol = new Array();
+var listTable = new Array();
 
 function viewDiv2(event) {
     let id = event.target.id;
@@ -66,6 +66,10 @@ function createStyle(parent) {
             listParent[0].style.fill = "";
             let id = listParent[0].id;
             listParent.splice(0, 1);
+
+            if(listTable.length !== 0){
+                listTable[0].remove();
+            }
             if (id !== parent.id) {
                 parent.style.fill = "black";
                 listParent.push(parent);
@@ -89,8 +93,8 @@ function createStyle(parent) {
 
 function addSvgInDiv(div, svg) {
     if (listSvg.length === 1) {
-        let idsvg = listSvg[0].id;
-        if (idsvg === svg.id) {
+        let idSvg = listSvg[0].id;
+        if (idSvg === svg.id) {
             listSvg[0].remove();
             listSvg.splice(0, 1);
         } else {

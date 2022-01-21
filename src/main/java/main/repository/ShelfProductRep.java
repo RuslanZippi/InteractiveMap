@@ -12,7 +12,5 @@ import java.util.List;
 @Repository
 public interface ShelfProductRep extends CrudRepository<ShelfProduct, Long> {
 
-
-    @Query("SELECT sp FROM ShelfProduct sp WHERE sp.shelf.id = :shelf_id")
-    List<ShelfProduct> findAllByShelfId(@Param("shelf_id") int shelf_id);
+    List<ShelfProduct> findByShelfId(int shelf_Id);
 }

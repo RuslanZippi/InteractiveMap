@@ -1,9 +1,8 @@
 function sendData(event) {
-
-    console.log("ID: " + event.target.id);
     let xhr = new XMLHttpRequest();
     let id = event.target.id;
 
+    let parentSvg = document.getElementById(id);
     let url = "/product/?id=" + id;
     xhr.open("GET", url);
 
@@ -12,30 +11,20 @@ function sendData(event) {
 
     let listProduct;
     xhr.onload = () => {
-        console.log(xhr.response);
         listProduct = xhr.response;
-        console.log(listProduct.length)
-        if (listProduct.length === 0) {
-            // alert("Пустая полка")
-        } else {
-            createTable(listProduct);
-        }
-
+        checkingTable(listProduct, parentSvg);
     }
-
-
     xhr.send();
-
 }
 
-function createTable(list) {
-    if (document.getElementById("newTable")) {
-        document.getElementById("newTable").remove();
-    }
-    let table = document.createElement('table');
+function createTable(table,list) {
+
     table.setAttribute("id", "newTable");
+    table.setAttribute('class', 'tableStyle')
+    table.setAttribute('display', 'inline')
     let thead = document.createElement('thead');
     let tbody = document.createElement('tbody');
+
 
     table.appendChild(thead);
     table.appendChild(tbody);
@@ -64,6 +53,9 @@ function createTable(list) {
 
         var row = document.createElement('tr');
         let row_data_1 = document.createElement('td');
+
+        row_data.setAttribute('id','firstColumn')
+
         let link = document.createElement('a');
         link.href = 'http://google.ru';
         link.appendChild(document.createTextNode(list[x].name))
@@ -74,5 +66,32 @@ function createTable(list) {
         row.appendChild(row_data_1);
         row.appendChild(row_data_2);
         tbody.appendChild(row)
+    }
+}
+
+function checkingTable(list, parent) {
+    if (listParentPol.length === 0) {
+        parent.style.fill = "black";
+        listParentPol.push(parent);
+
+        table = document.createElement('table');
+        createTable(table,list);
+        listTable.push(table);
+    } else {
+        listParentPol[0].style.fill = "";
+        let id = listParentPol[0].id;
+        listParentPol.splice(0, 1);
+
+        listTable[0].remove();
+        listTable.splice(0,1);
+        if (id !== parent.id) {
+            parent.style.fill = "black";
+            listParentPol.push(parent);
+
+
+            table = document.createElement('table');
+            createTable(table,list);
+            listTable.push(table);
+        }
     }
 }
