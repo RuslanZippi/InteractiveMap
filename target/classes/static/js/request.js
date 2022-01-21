@@ -1,8 +1,10 @@
-function sendData() {
-    var xhr = new XMLHttpRequest();
-    var id = event.target.id;
+function sendData(event) {
 
-    var url = "/product/?id=" + id;
+    console.log("ID: " + event.id);
+    let xhr = new XMLHttpRequest();
+    let id = event.target.id;
+
+    let url = "/product/?id=" + id;
     xhr.open("GET", url);
 
     xhr.responseType = "json";
@@ -73,25 +75,4 @@ function createTable(list) {
         row.appendChild(row_data_2);
         tbody.appendChild(row)
     }
-
-
-    // row_2.appendChild(row_2_data_1);
-    // row_2.appendChild(row_2_data_2);
-    // row_2.appendChild(row_2_data_3);
-    // tbody.appendChild(row_2);
-
-
-// Creating and adding data to third row of the table
-//     let row_3 = document.createElement('tr');
-//     let row_3_data_1 = document.createElement('td');
-//     row_3_data_1.innerHTML = "2.";
-//     let row_3_data_2 = document.createElement('td');
-//     row_3_data_2.innerHTML = "Adam White";
-//     let row_3_data_3 = document.createElement('td');
-//     row_3_data_3.innerHTML = "Microsoft";
-//
-//     row_3.appendChild(row_3_data_1);
-//     row_3.appendChild(row_3_data_2);
-//     row_3.appendChild(row_3_data_3);
-//     tbody.appendChild(row_3);
 }
