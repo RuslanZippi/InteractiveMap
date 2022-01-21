@@ -2,9 +2,8 @@ package main.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,5 +14,14 @@ public class Shelf {
     private int id;
 
     private String name;
+
+    @ManyToOne
+    private Stand stand;
+
+    @ManyToMany
+    @JoinTable(name = "shelf_product_count",
+    joinColumns = @JoinColumn(name = "shelf_id"),
+    inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> productList;
 
 }

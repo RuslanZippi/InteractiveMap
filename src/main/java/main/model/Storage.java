@@ -7,15 +7,14 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "stand")
-public class Stand {
+@Table(name = "storage")
+public class Storage {
 
     @Id
     private int id;
 
     private String name;
 
-    @OneToMany(mappedBy = "stand")
-    private List<Shelf> shelfList;
-
+    @ManyToMany
+    private List<Product> productList;
 }

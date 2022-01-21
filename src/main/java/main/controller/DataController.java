@@ -1,7 +1,7 @@
 package main.controller;
 
 import main.dto.ProductResponse;
-import main.service.TestService;
+import main.service.GettingProductListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class DataController {
 
     @Autowired
-    TestService service;
+    GettingProductListService service;
 
     Logger logger = Logger.getLogger(DataController.class.getName());
 

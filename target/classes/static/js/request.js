@@ -1,6 +1,6 @@
 function sendData(event) {
 
-    console.log("ID: " + event.id);
+    console.log("ID: " + event.target.id);
     let xhr = new XMLHttpRequest();
     let id = event.target.id;
 
@@ -16,7 +16,7 @@ function sendData(event) {
         listProduct = xhr.response;
         console.log(listProduct.length)
         if (listProduct.length === 0) {
-            alert("Пустая полка")
+            // alert("Пустая полка")
         } else {
             createTable(listProduct);
         }
