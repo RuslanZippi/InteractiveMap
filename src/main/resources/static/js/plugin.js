@@ -21,6 +21,19 @@ function createSVG(id){
     svg.setAttribute('class', 'svg2');
     svg.setAttribute('display', 'inline');
 
+
+    svg.appendChild(createMainText(id));
+    svg.appendChild(createText(9,110,470))
+    svg.appendChild(createText(8,300,470))
+    svg.appendChild(createText(7,470,470))
+    svg.appendChild(createText(6,110,320))
+    svg.appendChild(createText(5,300,320))
+    svg.appendChild(createText(4,470,320))
+    svg.appendChild(createText(3,110,165))
+    svg.appendChild(createText(2,300,165))
+    svg.appendChild(createText(1,470,165))
+
+
     svg.appendChild(createPolygon(svg,'67.5,484 183,484 183,462 158,462 158,428 102,428 102,452.5 67.5,452.5',1));
     svg.appendChild(createPolygon(svg,'245.5,484 361,484 361,462 336,462 336,428 280,428 280,452.5 245.5,452.5',2));
     svg.appendChild(createPolygon(svg,'411.5,484 527,484 527,462 502,462 502,428 445.5,428 445.5,452.5 411.5,452.5',3));
@@ -87,4 +100,22 @@ function addSvgInDiv(div,svg){
         listSvg.push(svg);
         div.appendChild(svg);
     }
+}
+function createMainText(id){
+    let text = document.createElementNS('http://www.w3.org/2000/svg',"text");
+    text.setAttribute('class','colorFont');
+    text.textContent = 'Стеллаж: ' + id;
+    text.setAttribute('x','200')
+    text.setAttribute('y', '50');
+    text.setAttribute('font-size', '36')
+    return text;
+}
+function createText(position,x,y){
+    let text = document.createElementNS('http://www.w3.org/2000/svg',"text");
+    text.setAttribute('class','colorFont');
+    text.textContent = position;
+    text.setAttribute('x',x)
+    text.setAttribute('y', y);
+    text.setAttribute('font-size', '36')
+    return text;
 }
