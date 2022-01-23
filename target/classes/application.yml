@@ -12,7 +12,6 @@ spring:
     enabled: true
     ignoreMissingMigrations: true
     cleanOnValidationError: true
-#  flyway:
-#    enabled: true
-#    ignoreMissingMigrations: true
-#    cleanOnValidationError: true
+server:
+#  address: 178.64.154.170
+  port: 8080

@@ -9,7 +9,6 @@ import java.util.List;
 @Data
 @Table(name = "shelf")
 public class Shelf {
-
     @Id
     private int id;
 
@@ -20,5 +19,4 @@ public class Shelf {
 
     @OneToMany(mappedBy = "shelf")
     private List<ShelfProduct> shelfProductList;
-
 }
