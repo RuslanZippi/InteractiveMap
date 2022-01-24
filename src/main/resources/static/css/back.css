@@ -32,6 +32,22 @@ body{
     height: 600px;
 
 }
+.svg3{
+    background-image: url('../image/stand2.png');
+    background-size: cover;
+    border: ridge 4px #e6e6f2;
+    display: inline;
+    width: 600px;
+    height: 600px;
+}
+.svg4{
+    background-image: url('../image/stand3.png');
+    background-size: cover;
+    border: ridge 4px #e6e6f2;
+    display: inline;
+    width: 600px;
+    height: 600px;
+}
 .mainSvg{
     width: 600px;
     height: 800px;

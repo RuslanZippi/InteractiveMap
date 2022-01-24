@@ -9,20 +9,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.logging.Logger;
 
 @Controller
-@RequestMapping("/")
 public class MainController {
 
     Logger logger = Logger.getLogger(MainController.class.getName());
 
-    @GetMapping
     @RequestMapping("/map")
     public String main(){
-        return "main";
+        return "map";
     }
 
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String reMain(){
-        return "redirect:/map";
+    @RequestMapping(method = {RequestMethod.OPTIONS, RequestMethod.GET}, value = "/**/{path:[^\\.]*}")
+    public String redirectToIndex() {
+        return "main";
     }
 }
