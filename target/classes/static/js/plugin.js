@@ -4,9 +4,7 @@ var listParentPol = new Array();
 var listTable = new Array();
 
 function viewDiv2(event) {
-    console.log("vievDiv2")
     let id = event.target.id;
-    // console.log("ID: " + id);
 
     let parentSvg = document.getElementById(id);
     let div = document.getElementById("div1");

@@ -18,6 +18,11 @@ public class MainController {
         return "map";
     }
 
+    @RequestMapping("/manager")
+    public String manager(){
+        return "management";
+    }
+
 
     @RequestMapping(method = {RequestMethod.OPTIONS, RequestMethod.GET}, value = "/**/{path:[^\\.]*}")
     public String redirectToIndex() {
