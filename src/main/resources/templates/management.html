@@ -32,14 +32,14 @@
 </nav>
 <div id="mainDiv" class="container">
     <div id="managerDiv">
-      <form enctype="multipart/form-data" method="post" action="/uploadPdf">
-          <input class="my" id="uploadPDF"  type="file" accept="*.pdf">
+<!--      <form id="formLoader">-->
+          <input class="fileLoader" id="uploadPDF"  type="file" accept="*.pdf">
           <label for="uploadPDF" th:onclick="onClick()">
               <span class="uploadText">Загрузка товара (PDF)</span>
               <span class="uploadFileName"></span>
-              <input id="inputButton" class="buttonManager" type="submit" value="Отправить">
+              <input id="inputButton" onclick="check()" class="buttonManager" type="button" value="Отправить">
           </label>
-      </form>
+<!--      </form>-->
 
 
         <button id="CreateObject" class="buttonManager">Создание объекта</button>

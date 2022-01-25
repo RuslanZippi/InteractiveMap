@@ -1,6 +1,4 @@
 function onClick() {
-    console.log("onClick")
-
     let input = document.querySelector('#uploadPDF');
 
     let label = input.nextElementSibling
@@ -16,4 +14,20 @@ function onClick() {
             label.querySelector('.uploadFileName').innerText = labelVal;
     });
     document.getElementById('inputButton').style.display = 'block';
+}
+
+function check() {
+    let file = document.getElementById('uploadPDF');
+
+    console.log("file size: " + file.files[0].size)
+    let fileData = new FormData();
+
+    fileData.set('file', file.files[0], file.files[0].name);
+
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('POST', '/uploadPdf', true)
+    console.log(fileData)
+    xhr.send(fileData);
 }
