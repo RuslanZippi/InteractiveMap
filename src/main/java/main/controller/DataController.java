@@ -1,14 +1,13 @@
 package main.controller;
 
 import main.dto.ProductResponse;
+import main.dto.request.ProductRequest;
+import main.model.Product;
 import main.service.GettingProductListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -27,5 +26,11 @@ public class DataController {
     public ResponseEntity<List<ProductResponse>> testData(@RequestParam String id){
         logger.info("ID: " + id);
         return new ResponseEntity<List<ProductResponse>>(service.getProductByPosition(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<String> updateData(@RequestBody ProductRequest productRequest){
+
+        return new ResponseEntity<>("OK",HttpStatus.OK);
     }
 }
