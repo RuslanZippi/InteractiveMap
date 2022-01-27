@@ -1,5 +1,5 @@
 CREATE TABLE product (
-  id INT NOT NULL,
+  id INT NOT NULL auto_increment,
   name VARCHAR(255) NULL,
   count INT NULL,
   position VARCHAR(255) NULL,
