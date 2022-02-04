@@ -9,6 +9,8 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -17,8 +19,12 @@ import java.util.logging.Logger;
 public class SaverService {
     Logger logger = Logger.getLogger(SaverService.class.getName());
 
-    @Autowired
+    final
     ProductRep productRep;
+
+    public SaverService(ProductRep productRep) {
+        this.productRep = productRep;
+    }
 
     public List<ResponseSaver> saveData(List<ProductRequest> productRequests) {
         List<ResponseSaver> list = new ArrayList<>();
@@ -35,12 +41,12 @@ public class SaverService {
     public void saveDataAfterCheck(List<ProductSaveRequest> productSaveRequests) {
         for (ProductSaveRequest productSaveRequest : productSaveRequests) {
             if (productSaveRequest.isStatus()) {
-                logger.info("saveDataAfterCheck: true");
-                logger.info("ProductRequest: " + productSaveRequest);
+//                logger.info("saveDataAfterCheck: true");
+//                logger.info("ProductRequest: " + productSaveRequest);
                 update(productSaveRequest.getProduct());
             } else {
-                logger.info("saveDataAfterCheck: false");
-                save(productSaveRequest.getProduct());
+//                logger.info("saveDataAfterCheck: false");
+                saveAfterCheck(productSaveRequest.getProduct());
             }
         }
     }
@@ -63,23 +69,18 @@ public class SaverService {
         productRep.save(product);
     }
     private void saveAfterCheck(ProductRequest productRequest) {
-//        logger.info("ProductName (update): " + product.getName());
-//        logger.info("ProductCount (update): " + product.getCount());
         int count = Integer.parseInt(productRequest.getCount());
-        String name = productRequest.getName();
-//        product.setCount(product.getCount() + Integer.parseInt(productRequest.getCount()));
-        productRep.update(count,name);
+        Product product = productRep.findByName(productRequest.getName());
+        product.setCount(count);
+        productRep.save(product);
     }
 
     private void update(ProductRequest productRequest){
         Product product = productRep.findByName(productRequest.getName());
-//        logger.info("ProductName (update): " + product.getName());
-//        logger.info("ProductCount (update): " + product.getCount());
         int count = product.getCount() + Integer.parseInt(productRequest.getCount());
+        product.setCount(count);
         String name = productRequest.getName();
-//        product.setCount(product.getCount() + Integer.parseInt(productRequest.getCount()));
-        productRep.update(count,name);
+        logger.info("count: " + count + "name: " + name);
+        productRep.save(product);
     }
-
-
 }

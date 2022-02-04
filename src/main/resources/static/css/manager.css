@@ -5,6 +5,17 @@
     border: 3px solid #808080; /* Белая рамка */
     border-radius: 10px; /* Радиус скругления */
 }
+.description{
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+}
+.dialogStyle{
+    background-color: #eeeeee;
+    border: 3px solid #8080;
+    border-radius: 10px;
+
+}
 .buttonManager{
     font-size: 16px;
     font-weight: 700;

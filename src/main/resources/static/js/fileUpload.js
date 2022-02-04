@@ -46,15 +46,46 @@ function check() {
     let listProduct;
     xhr.onload = () => {
         listProduct = xhr.response;
-        // console.log(listProduct.length)
         createTableInStorage(listProduct);
     }
     xhr.send(fileData);
+    createSendButton();
+}
+
+function createSendButton(){
+    let div = document.getElementById('managerDiv');
+    let button = document.createElement('button');
+    button.setAttribute('class', 'buttonManager');
+    button.setAttribute('id','sendButton');
+    button.innerHTML = "Отправить";
+    button.addEventListener('click',()=>{
+        sendDataProduct();
+        button.remove();
+    })
+    div.appendChild(button);
+}
+
+function allProduct(){
+    let xhr = new XMLHttpRequest();
+    let url = "/all";
+
+    xhr.open("GET",url);
+    xhr.responseType = "json";
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    let listProduct;
+
+    xhr.onload = ()=>{
+        listProduct = xhr.response;
+        createTableInStorage(listProduct)
+    }
+    xhr.send();
 }
 
 function checkTable() {
     let table = document.getElementById("tbodyId");
     let tableBody = table.childNodes;
+    listProductPush = new Array();
     for (let x = 0; x < tableBody.length; x++) {
 
         let name = tableBody[x].childNodes[1].childNodes[0].innerHTML
@@ -63,9 +94,6 @@ function checkTable() {
         listProductPush.push(new Product(name, count));
     }
     let jsonProduct = JSON.stringify(listProductPush);
-
-    // console.log(typeof jsonProduct)
-    // console.log(jsonProduct)
 
     return jsonProduct;
 }
@@ -76,6 +104,7 @@ function sendDataProduct() {
     xhr.open('POST', '/product/update', true);
     xhr.setRequestHeader("Content-Type", "application/json");
     let listProduct;
+    console.log()
     xhr.onload = () => {
         listProduct = xhr.response;
         createAlert(listProduct)
@@ -86,33 +115,46 @@ function sendDataProduct() {
 function createAlert(listProduct) {
     let s = "";
     let k = "";
-    // console.log(listProduct)
+    console.log("listProduct: " + listProduct.length);
     for (let x = 0; x < listProduct.length; x++) {
-        // console.log("Position: " + listProduct[])
         if (listProduct[x].status === false) {
             k = "Товары уже существуют: "
             s = s + listProduct[x].position + " ";
-            // console.log(k + s);
         } else {
             k = "Успешно добавлено!"
         }
     }
 
-    // console.log(s)
     if (s === "") {
-        // let questions = confirm(k);
         alert(k);
     } else {
-        k = k + s;
-        let questions = confirm(k);
-        if(questions){
-            updateData(listProduct,true)
-        }
-        else {
+        k = k + s + '\n' + "Обновить количество или дополнить ?";
+        let buttonOk = document.createElement('button');
+        buttonOk.setAttribute('class','buttonManager')
+        buttonOk.innerHTML = "Обновить"
+        buttonOk.addEventListener('click', ()=>{
             updateData(listProduct,false)
-        }
+            dialog.close();
+        })
+        let buttonNo = document.createElement('button');
+        buttonNo.setAttribute('class',"buttonManager");
+        buttonNo.innerHTML = "Дополнить"
+        buttonNo.addEventListener('click',()=>{
+            updateData(listProduct,true)
+            dialog.close();
+        })
+        let dialog = document.createElement('dialog');
+        let p = document.createElement('p');
+        p.setAttribute('class','description')
+        p.innerHTML = k;
+        dialog.setAttribute('class','dialogStyle');
+        dialog.appendChild(p);
+        dialog.appendChild(buttonOk);
+        dialog.appendChild(buttonNo);
+        let mainBody = document.getElementById("body");
+        mainBody.appendChild(dialog);
+        dialog.showModal();
     }
-
 }
 
 function createTableInStorage(listProduct) {
@@ -210,7 +252,7 @@ function updateData(listProduct, status) {
     xhr.open("POST", "/product/save", true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
-    console.log(JSON.stringify(list))
+    // console.log(JSON.stringify(list))
     xhr.send(JSON.stringify(list));
 
 
