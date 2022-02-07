@@ -1,25 +1,31 @@
-function sendData(event) {
-    let xhr = new XMLHttpRequest();
-    let id = event.target.id;
+var listAllProduct = new Array();
 
-    let parentSvg = document.getElementById(id);
-    let url = "/product/?id=" + id;
-    xhr.open("GET", url);
+function getAllProductInTable() {
+    let xhr = new XMLHttpRequest();
+    let url = "/allProduct";
 
     xhr.responseType = "json";
+    xhr.open("GET", url);
     xhr.setRequestHeader("Content-Type", "application/json");
 
-    let listProduct;
     xhr.onload = () => {
-        listProduct = xhr.response;
-        checkingTable(listProduct, parentSvg);
+        listAllProduct = xhr.response;
+        console.log(listAllProduct.length)
+        createTableAllProduct(listAllProduct);
     }
     xhr.send();
 }
 
-function createTable(table,list) {
+function createTableAllProduct(list) {
+    let table;
+    if (document.getElementById('tableAllProduct') === null) {
 
-    table.setAttribute("id", "newTable");
+        table = document.createElement('table');
+    } else {
+        document.getElementById('tableAllProduct').remove();
+        table = document.createElement('table');
+    }
+    table.setAttribute("id", "tableAllProduct");
     table.setAttribute('class', 'tableStyle')
     table.setAttribute('display', 'inline')
     let thead = document.createElement('thead');
@@ -29,7 +35,7 @@ function createTable(table,list) {
     table.appendChild(thead);
     table.appendChild(tbody);
 
-    document.getElementById('table').appendChild(table);
+    document.getElementById('mainDivInAccount').appendChild(table);
 
     let row_1 = document.createElement('tr');
     let heading_1 = document.createElement('th');
@@ -38,11 +44,14 @@ function createTable(table,list) {
     heading_2.innerHTML = "Название товара";
     let heading_3 = document.createElement('th');
     heading_3.innerHTML = "Количество";
+    let heading_4 = document.createElement('th');
+    heading_4.innerHTML = "Позиция";
 
     row_1.appendChild(heading_1);
 
     row_1.appendChild(heading_2);
     row_1.appendChild(heading_3);
+    row_1.appendChild(heading_4);
     thead.appendChild(row_1);
 
 
@@ -54,44 +63,21 @@ function createTable(table,list) {
         var row = document.createElement('tr');
         let row_data_1 = document.createElement('td');
 
-        row_data.setAttribute('id','firstColumn')
+        row_data.setAttribute('id', 'firstColumn')
 
         let link = document.createElement('a');
-        link.href = '/id'+ list[x].id;
+        link.href = '/id' + list[x].id;
         link.appendChild(document.createTextNode(list[x].name))
         row_data_1.appendChild(link);
         let row_data_2 = document.createElement('td');
         row_data_2.innerHTML = list[x].count
+
+        let row_data_3 = document.createElement('td');
+        row_data_3.innerHTML = list[x].position;
         row.appendChild(row_data);
         row.appendChild(row_data_1);
         row.appendChild(row_data_2);
+        row.appendChild(row_data_3);
         tbody.appendChild(row)
-    }
-}
-
-function checkingTable(list, parent) {
-    if (listParentPol.length === 0) {
-        parent.style.fill = "black";
-        listParentPol.push(parent);
-
-        table = document.createElement('table');
-        createTable(table,list);
-        listTable.push(table);
-    } else {
-        listParentPol[0].style.fill = "";
-        let id = listParentPol[0].id;
-        listParentPol.splice(0, 1);
-
-        listTable[0].remove();
-        listTable.splice(0,1);
-        if (id !== parent.id) {
-            parent.style.fill = "black";
-            listParentPol.push(parent);
-
-
-            table = document.createElement('table');
-            createTable(table,list);
-            listTable.push(table);
-        }
     }
 }

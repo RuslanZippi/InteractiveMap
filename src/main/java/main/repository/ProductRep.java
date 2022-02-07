@@ -17,7 +17,7 @@ public interface ProductRep  extends CrudRepository<Product, Long>{
 
     List<Product> findByPosition(String position);
 
-    Product findAllById(int id);
+    List<Product> findAll();
 
     Product findByName(String name);
 

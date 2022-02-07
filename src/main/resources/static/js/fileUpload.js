@@ -52,30 +52,30 @@ function check() {
     createSendButton();
 }
 
-function createSendButton(){
+function createSendButton() {
     let div = document.getElementById('managerDiv');
     let button = document.createElement('button');
     button.setAttribute('class', 'buttonManager');
-    button.setAttribute('id','sendButton');
+    button.setAttribute('id', 'sendButton');
     button.innerHTML = "Отправить";
-    button.addEventListener('click',()=>{
+    button.addEventListener('click', () => {
         sendDataProduct();
         button.remove();
     })
     div.appendChild(button);
 }
 
-function allProduct(){
+function allProduct() {
     let xhr = new XMLHttpRequest();
     let url = "/all";
 
-    xhr.open("GET",url);
+    xhr.open("GET", url);
     xhr.responseType = "json";
     xhr.setRequestHeader("Content-Type", "application/json");
 
     let listProduct;
 
-    xhr.onload = ()=>{
+    xhr.onload = () => {
         listProduct = xhr.response;
         createTableInStorage(listProduct)
     }
@@ -130,24 +130,24 @@ function createAlert(listProduct) {
     } else {
         k = k + s + '\n' + "Обновить количество или дополнить ?";
         let buttonOk = document.createElement('button');
-        buttonOk.setAttribute('class','buttonManager')
+        buttonOk.setAttribute('class', 'buttonManager')
         buttonOk.innerHTML = "Обновить"
-        buttonOk.addEventListener('click', ()=>{
-            updateData(listProduct,false)
+        buttonOk.addEventListener('click', () => {
+            updateData(listProduct, false)
             dialog.close();
         })
         let buttonNo = document.createElement('button');
-        buttonNo.setAttribute('class',"buttonManager");
+        buttonNo.setAttribute('class', "buttonManager");
         buttonNo.innerHTML = "Дополнить"
-        buttonNo.addEventListener('click',()=>{
-            updateData(listProduct,true)
+        buttonNo.addEventListener('click', () => {
+            updateData(listProduct, true)
             dialog.close();
         })
         let dialog = document.createElement('dialog');
         let p = document.createElement('p');
-        p.setAttribute('class','description')
+        p.setAttribute('class', 'description')
         p.innerHTML = k;
-        dialog.setAttribute('class','dialogStyle');
+        dialog.setAttribute('class', 'dialogStyle');
         dialog.appendChild(p);
         dialog.appendChild(buttonOk);
         dialog.appendChild(buttonNo);
@@ -242,6 +242,7 @@ function updateData(listProduct, status) {
             this.status = status;
         }
     }
+
     for (let x = 0; x < listProduct.length; x++) {
         if (!listProduct.status) {
             list.push(new ProductSave(listProductPush[x], status))

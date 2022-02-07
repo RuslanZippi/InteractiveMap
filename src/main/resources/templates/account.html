@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
+    <link th:href="@{css/account.css}" rel="stylesheet">
     <link th:href="@{css/back.css}" rel="stylesheet">
     <link th:href="@{css/table.css}" rel="stylesheet">
     <link th:href="@{css/map.css}" rel="stylesheet"/>
@@ -30,30 +31,40 @@
         </div>
     </div>
 </nav>
-<div id="mainDiv" class="container">
+<div id="mainDivInAccount" class="container">
     <div id="managerDiv">
-<!--      <form id="formLoader">-->
-          <input class="fileLoader" id="uploadPDF"  type="file" accept="*.pdf">
-          <label for="uploadPDF" th:onclick="onClick()">
-              <span class="uploadText">Загрузка товара (PDF)</span>
-              <span class="uploadFileName"></span>
-              <input id="inputButton" onclick="check()" class="buttonManager" type="button" value="Отправить">
-          </label>
-<!--      </form>-->
-
-
-        <button id="CreateObject" class="buttonManager">Создание объекта</button>
+        <button id="CreateObject" class="buttonManager" onclick="getAllProductInTable()">Вывести список всех товаров
+        </button>
         <button id="uploadOrder" class="buttonManager">Ордер отгрузки</button>
-        <button id="replaceProduct" class="buttonManager" th:onclick="allProduct()">Редактирование товара</button>
+        <label>
+        </label>
+        <input id="check1" class="custom-checkbox" type="checkbox" value="product">
+        <label id="label1" for="check1">
+            <span class="spanText">Склад "Товары"</span>
+        </label>
+        <input id="check2" class="custom-checkbox" type="checkbox" value="material">
+        <label id="label2" for="check2">
+            <span class="spanText">Склад "Материалы"</span>
+        </label>
+        <input id="check3" class="custom-checkbox" type="checkbox" value="another">
+        <label id="label3" for="check3">
+            <span class="spanText">"Неучтенка"</span>
+        </label>
+        <input id="check4" class="custom-checkbox" type="checkbox" value="object">
+        <label id="label4" for="check4">
+            <span class="spanText">Показывать товар под "объекты"</span>
+        </label>
+        <select class="custom-select" id="select1">
+        </select>
     </div>
-    <div id="managerTable"></div>
-
 </div>
+
+<script th:src="@{js/checkBox.js}"></script>
 <script th:src="@{js/plugin.js}"></script>
 <script th:src="@{js/request.js}"></script>
 <script th:src="@{js/getId.js}"></script>
 <script th:src="@{js/controller.js}"></script>
-<script th:src="@{js/fileUpload.js}"></script>
+<script th:src="@{js/account.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

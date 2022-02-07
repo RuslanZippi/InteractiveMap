@@ -23,6 +23,11 @@ public class MainController {
         return "management";
     }
 
+    @RequestMapping("/account")
+    public String account(){
+        return "account";
+    }
+
 
     @RequestMapping(method = {RequestMethod.OPTIONS, RequestMethod.GET}, value = "/**/{path:[^\\.]*}")
     public String redirectToIndex() {
