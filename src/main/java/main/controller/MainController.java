@@ -31,6 +31,6 @@ public class MainController {
 
     @RequestMapping(method = {RequestMethod.OPTIONS, RequestMethod.GET}, value = "/**/{path:[^\\.]*}")
     public String redirectToIndex() {
-        return "main";
+        return "redirect:map";
     }
 }

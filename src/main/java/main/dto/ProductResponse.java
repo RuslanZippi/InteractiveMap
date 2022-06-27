@@ -7,9 +7,9 @@ public class ProductResponse {
 
     String name;
     int count;
-    int id;
+    long id;
 
-    public ProductResponse(String name, int count, int id) {
+    public ProductResponse(String name, int count, long id) {
         this.name = name;
         this.count = count;
         this.id = id;

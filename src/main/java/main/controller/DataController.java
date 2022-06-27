@@ -1,13 +1,12 @@
 package main.controller;
 
+import main.dto.ProductCart;
 import main.dto.ProductResponse;
 import main.dto.ResponseSaver;
 import main.dto.request.ProductRequest;
 import main.dto.request.ProductSaveRequest;
-import main.model.Product;
-import main.service.GettingProductListService;
+import main.service.GettingProductService;
 import main.service.SaverService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +20,14 @@ import java.util.logging.Logger;
 public class DataController {
 
     final
-    GettingProductListService service;
+    GettingProductService service;
 
     final
     SaverService saverService;
 
     Logger logger = Logger.getLogger(DataController.class.getName());
 
-    public DataController(GettingProductListService service, SaverService saverService) {
+    public DataController(GettingProductService service, SaverService saverService) {
         this.service = service;
         this.saverService = saverService;
     }
@@ -51,5 +50,12 @@ public class DataController {
         logger.info("saveData list size: " + list.size());
         saverService.saveDataAfterCheck(list);
         return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
+
+    @GetMapping("/cart")
+    public ResponseEntity<ProductCart> getProductCart(@RequestParam String id){
+        logger.info("ID: " + id);
+        return new ResponseEntity<ProductCart>(HttpStatus.OK);
+
     }
 }

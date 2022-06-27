@@ -49,7 +49,9 @@ function check() {
         createTableInStorage(listProduct);
     }
     xhr.send(fileData);
-    createSendButton();
+    if (document.getElementById("sendButton") == null) {
+        createSendButton();
+    }
 }
 
 function createSendButton() {

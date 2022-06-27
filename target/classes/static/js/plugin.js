@@ -3,6 +3,9 @@ var listParent = new Array();
 var listParentPol = new Array();
 var listTable = new Array();
 
+/*
+Создание схемы полок, аналогично схеме склада, с помощью svg компонентов.
+*/
 function viewDiv2(event) {
     let id = event.target.id;
 
@@ -12,7 +15,9 @@ function viewDiv2(event) {
     addSvgInDiv(div, createSVG(id));
 
 }
-
+/*
+создание svg элементов по id стеллажа.
+ */
 function createSVG(id) {
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.id = "shelf" + id;
@@ -126,7 +131,9 @@ function createStyle(parent) {
         }
     }
 }
-
+/*
+избежание дублирования
+ */
 function addSvgInDiv(div, svg) {
     if (listSvg.length === 1) {
         let idSvg = listSvg[0].id;
@@ -145,6 +152,9 @@ function addSvgInDiv(div, svg) {
     }
 }
 
+/*
+Установка главного названия стеллажа
+ */
 function createMainText(id,x,y) {
     let text = document.createElementNS('http://www.w3.org/2000/svg', "text");
     text.setAttribute('class', 'colorFont');
@@ -154,7 +164,9 @@ function createMainText(id,x,y) {
     text.setAttribute('font-size', '36')
     return text;
 }
-
+/*
+установка номера полки
+ */
 function createText(position, x, y) {
     let text = document.createElementNS('http://www.w3.org/2000/svg', "text");
     text.setAttribute('class', 'colorFont');

@@ -3,32 +3,32 @@ package main.service;
 import main.dto.ProductResponse;
 import main.model.ShelfProduct;
 import main.repository.ShelfProductRep;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
-public class GettingProductListService {
-    Logger logger = Logger.getLogger(GettingProductListService.class.getName());
-    @Autowired
+public class GettingProductService {
+    Logger logger = Logger.getLogger(GettingProductService.class.getName());
+    final
     ShelfProductRep shelfProductRep;
+
+    public GettingProductService(ShelfProductRep shelfProductRep) {
+        this.shelfProductRep = shelfProductRep;
+    }
 
     public List<ProductResponse> getProductByPosition(String position) {
         List<ProductResponse> responseList = new ArrayList<>();
         int id = parseId(position);
+        logger.info(String.valueOf(id));
         List<ShelfProduct> list = shelfProductRep.findByShelfId(id);
 
         logger.info("size: " + list.size());
-        int x = 1;
         for (ShelfProduct shelfProduct : list) {
-            responseList.add(new ProductResponse(shelfProduct.getProduct().getName(), shelfProduct.getCount(), x));
-            x++;
+            responseList.add(new ProductResponse(shelfProduct.getProduct().getName(), shelfProduct.getCount(), shelfProduct.getId().getProduct_id()));
         }
-//        list2.forEach(x-> logger.info("productALL: " + x));
         return responseList;
     }
 
