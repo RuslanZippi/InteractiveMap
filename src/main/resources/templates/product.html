@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
+
+    <link th:href="@{css/account.css}" rel="stylesheet">
     <link th:href="@{css/back.css}" rel="stylesheet">
     <link th:href="@{css/table.css}" rel="stylesheet">
     <link th:href="@{css/map.css}" rel="stylesheet"/>
@@ -15,7 +15,8 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 </head>
-<body id="body">
+<body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Кладовка</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -30,33 +31,17 @@
         </div>
     </div>
 </nav>
-<div id="mainDiv" class="container">
-    <div id="managerDiv">
-<!--      <form id="formLoader">-->
-          <input class="fileLoader" id="uploadPDF"  type="file" accept="*.pdf">
-          <label for="uploadPDF" th:onclick="onClick()">
-              <span class="uploadText">Загрузка товара (CSV)</span>
-              <span class="uploadFileName"></span>
-              <input id="inputButton" onclick="check()" class="buttonManager" type="button" value="Отправить">
-          </label>
-<!--      </form>-->
 
 
-        <button id="CreateObject" class="buttonManager">Создание объекта</button>
-        <button id="uploadOrder" class="buttonManager">Ордер отгрузки</button>
-        <button id="replaceProduct" class="buttonManager" onclick="allProduct()">Редактирование товара</button>
-    </div>
-    <div id="managerTable"></div>
-
-</div>
+<script th:src="@{js/checkBox.js}"></script>
 <script th:src="@{js/plugin.js}"></script>
 <script th:src="@{js/request.js}"></script>
 <script th:src="@{js/getId.js}"></script>
 <script th:src="@{js/controller.js}"></script>
-<script th:src="@{js/fileUpload.js}"></script>
+<script th:src="@{js/account.js}"></script>
+<script th:src="@{js/product_cart.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
 </body>
 </html>

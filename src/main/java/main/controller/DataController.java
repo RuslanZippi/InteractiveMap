@@ -3,6 +3,7 @@ package main.controller;
 import main.dto.ProductCart;
 import main.dto.ProductResponse;
 import main.dto.ResponseSaver;
+import main.dto.request.ProductList;
 import main.dto.request.ProductRequest;
 import main.dto.request.ProductSaveRequest;
 import main.service.GettingProductService;
@@ -52,10 +53,15 @@ public class DataController {
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
-    @GetMapping("/cart")
-    public ResponseEntity<ProductCart> getProductCart(@RequestParam String id){
-        logger.info("ID: " + id);
-        return new ResponseEntity<ProductCart>(HttpStatus.OK);
+//    @GetMapping("/cart")
+//    public ResponseEntity<ProductCart> getProductCart(@RequestParam String id){
+//        logger.info("ID: " + id);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//
+//    }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<ProductList>> getAllProduct(){
+        return new ResponseEntity<>(service.getAllProductList(),HttpStatus.OK);
     }
 }

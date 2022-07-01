@@ -28,9 +28,14 @@ public class MainController {
         return "account";
     }
 
-
-    @RequestMapping(method = {RequestMethod.OPTIONS, RequestMethod.GET}, value = "/**/{path:[^\\.]*}")
+    @RequestMapping(method = {RequestMethod.OPTIONS, RequestMethod.GET}, value = "/{path:[^\\.]*}")
     public String redirectToIndex() {
         return "redirect:map";
     }
+
+    @RequestMapping("/product-cart")
+    public String redirectToIndexBase() {
+        return "product";
+    }
+
 }

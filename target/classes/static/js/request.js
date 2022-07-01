@@ -12,6 +12,7 @@ function sendData(event) {
     let listProduct;
     xhr.onload = () => {
         listProduct = xhr.response;
+        console.log(listProduct);
         checkingTable(listProduct, parentSvg);
     }
     xhr.send();

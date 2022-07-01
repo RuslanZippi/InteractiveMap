@@ -69,7 +69,7 @@ function createSendButton() {
 
 function allProduct() {
     let xhr = new XMLHttpRequest();
-    let url = "/all";
+    let url = "/product/all";
 
     xhr.open("GET", url);
     xhr.responseType = "json";
@@ -218,7 +218,7 @@ function createTableInStorage(listProduct) {
         let link = document.createElement('a');
         let text = document.createElement('input');
         text.setAttribute('type', 'text')
-        link.href = '/test';
+        link.href = '/product/cart?id='+ listProduct[x].id;
         link.appendChild(document.createTextNode(listProduct[x].name))
         row_data_1.appendChild(link);
         row_data_2.innerHTML = listProduct[x].type

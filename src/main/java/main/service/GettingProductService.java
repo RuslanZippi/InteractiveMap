@@ -1,6 +1,7 @@
 package main.service;
 
 import main.dto.ProductResponse;
+import main.dto.request.ProductList;
 import main.model.ShelfProduct;
 import main.repository.ShelfProductRep;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,21 @@ public class GettingProductService {
         this.shelfProductRep = shelfProductRep;
     }
 
+    public List<ProductList> getAllProductList(){
+        ProductList productList;
+        List<ProductList> list = new ArrayList<>();
+        List<ShelfProduct> shelfProductList = (List<ShelfProduct>) shelfProductRep.findAll();
+        for (int x=0; x< shelfProductList.size();x++){
+//            logger.info("SHELF: " + shelfProductList.get(x).getProduct().getName());
+            productList =  new ProductList();
+            productList.setName(shelfProductList.get(x).getProduct().getName());
+            productList.setCount(shelfProductList.get(x).getProduct().getCount());
+            productList.setPosition(shelfProductList.get(x).getProduct().getPosition());
+            productList.setId(shelfProductList.get(x).getProduct().getId());
+            list.add(productList);
+        }
+        return list;
+    }
     public List<ProductResponse> getProductByPosition(String position) {
         List<ProductResponse> responseList = new ArrayList<>();
         int id = parseId(position);
