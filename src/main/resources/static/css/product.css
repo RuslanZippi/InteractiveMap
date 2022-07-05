@@ -1,0 +1,43 @@
+.productProperty{
+    font-size: 16px;
+    background: #eaeef1;
+    position: relative;
+    width: 100px;
+}
+#nameProduct{
+    top: 15px;
+    left: 50px;
+}
+#descriptionProduct{
+    left: 50px;
+    top: 100px;
+}
+#locationProduct{
+    top: -250px;
+    left: 900px;
+}
+.divProduct{
+    position: relative;
+}
+#divName{
+    top: 10px;
+    background: #0b76ef;
+    border: 3px #0b76ef;
+    width: 500px;
+    height: 30px;
+}
+#divDesc{
+    top: 10px;
+    background: #0b76ef;
+    border: 3px red;
+    width: 500px;
+    height: 180px;
+}
+#divLocation{
+    top: 10px;
+    left: -170px;
+    background: #0b76ef;
+    border: 3px black;
+    width: 400px;
+    height: 300px;
+}

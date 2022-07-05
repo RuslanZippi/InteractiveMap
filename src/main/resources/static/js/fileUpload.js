@@ -218,7 +218,7 @@ function createTableInStorage(listProduct) {
         let link = document.createElement('a');
         let text = document.createElement('input');
         text.setAttribute('type', 'text')
-        link.href = '/product/cart?id='+ listProduct[x].id;
+        link.href = '/product-cart?id='+ listProduct[x].id;
         link.appendChild(document.createTextNode(listProduct[x].name))
         row_data_1.appendChild(link);
         row_data_2.innerHTML = listProduct[x].type
