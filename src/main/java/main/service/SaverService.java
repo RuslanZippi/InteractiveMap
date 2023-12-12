@@ -5,12 +5,8 @@ import main.dto.request.ProductRequest;
 import main.dto.request.ProductSaveRequest;
 import main.model.Product;
 import main.repository.ProductRep;
-import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;

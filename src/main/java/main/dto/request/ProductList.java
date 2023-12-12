@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductList {
-    String name;
-    int id;
-    int count;
-    String position;
+    private String name;
+    private int id;
+    private int count;
+    private String position;
 
 }

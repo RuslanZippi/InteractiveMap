@@ -53,13 +53,6 @@ public class DataController {
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
-//    @GetMapping("/cart")
-//    public ResponseEntity<ProductCart> getProductCart(@RequestParam String id){
-//        logger.info("ID: " + id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//
-//    }
-
     @GetMapping("/all")
     public ResponseEntity<List<ProductList>> getAllProduct(){
         return new ResponseEntity<>(service.getAllProductList(),HttpStatus.OK);

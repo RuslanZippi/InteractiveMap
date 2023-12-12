@@ -66,7 +66,7 @@ function createTableAllProduct(list) {
         row_data.setAttribute('id', 'firstColumn')
 
         let link = document.createElement('a');
-        link.href = '/id' + list[x].id;
+        link.href = '/product-cart?id=' + list[x].id;
         link.appendChild(document.createTextNode(list[x].name))
         row_data_1.appendChild(link);
         let row_data_2 = document.createElement('td');

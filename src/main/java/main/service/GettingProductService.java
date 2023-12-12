@@ -25,7 +25,6 @@ public class GettingProductService {
         List<ProductList> list = new ArrayList<>();
         List<ShelfProduct> shelfProductList = (List<ShelfProduct>) shelfProductRep.findAll();
         for (int x=0; x< shelfProductList.size();x++){
-//            logger.info("SHELF: " + shelfProductList.get(x).getProduct().getName());
             productList =  new ProductList();
             productList.setName(shelfProductList.get(x).getProduct().getName());
             productList.setCount(shelfProductList.get(x).getProduct().getCount());

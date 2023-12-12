@@ -21,7 +21,4 @@ public interface ProductRep  extends CrudRepository<Product, Long>{
 
     Product findByName(String name);
 
-//    @Modifying
-//    @Query("UPDATE Product p SET p.count = :count WHERE p.name = :name")
-//    void update(@Param("count") int count, @Param("name") String name);
 }

@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class ProductResponse {
 
-    String name;
-    int count;
-    long id;
+    private String name;
+    private int count;
+    private long id;
 
     public ProductResponse(String name, int count, long id) {
         this.name = name;
