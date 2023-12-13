@@ -15,14 +15,30 @@ function createOrder() {
     article.innerText += "№ " + getOrderId();
     orderIdDiv.setAttribute("id", "orderIdDiv")
     orderIdDiv.setAttribute("class", "orderText")
-
+    //createDateDiv();
     orderIdDiv.appendChild(article);
     mainDiv.appendChild(orderIdDiv);
-    document.getElementById("mainDiv").appendChild(mainDiv);
+    mainDiv.appendChild(createDateDiv())
+    document.getElementById("mainDiv").appendChild(mainDiv).appendChild();
 }
 
 function getOrderId(){
 
     //запрос к бд для получения нужного id
     return "13213";
+}
+
+function createDateDiv(){
+    let dateDiv = document.createElement("div");
+    dateDiv.setAttribute("id","orderDateDiv");
+    dateDiv.setAttribute("class","orderDate");
+    let date = document.createElement("input");
+    date.setAttribute("type", "date");
+    let labelDate = document.createElement("label");
+    labelDate.innerText +=date;
+
+    dateDiv.appendChild(date);
+    dateDiv.appendChild(labelDate);
+    console.log();
+    return dateDiv;
 }
