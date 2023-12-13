@@ -1,3 +1,5 @@
+
+
 function createOrder() {
     console.log(document.getElementById("mainDiv").className)
     let mainDiv;
@@ -21,6 +23,7 @@ function createOrder() {
     mainDiv.appendChild(createDateDiv())
     mainDiv.appendChild(createRecipientField())
     document.getElementById("mainDiv").appendChild(mainDiv);
+    searchProductTest();
 }
 
 function getOrderId(){
@@ -43,16 +46,16 @@ function createDateDiv(){
 //    labelDate.innerText += input});
     dateDiv.appendChild(date);
     console.log();
-    dateDiv.appendChild(crateDateButton());
+    dateDiv.appendChild(createButton("orderDateButton", "Сохранить",onClickDateButton));
     return dateDiv;
 }
 
-function crateDateButton(){
+function createButton(id,text,onclick){
      let dateButton = document.createElement("button");
-     dateButton.setAttribute("id","orderDateButton");
+     dateButton.setAttribute("id",id);
      dateButton.setAttribute("class","buttonManager");
-     dateButton.innerText +="Сохранить";
-     dateButton.onclick = onClickDateButton;
+     dateButton.innerText =text;
+     dateButton.onclick = onclick;
      return dateButton;
 }
 
@@ -73,4 +76,36 @@ function createRecipientField(){
     field.appendChild(text);
 
     return field;
+}
+function onClickAddButton(){
+       let xhr = new XMLHttpRequest();
+           let url = "/allProduct";
+
+           xhr.responseType = "json";
+           xhr.open("GET", url);
+           xhr.setRequestHeader("Content-Type", "application/json");
+
+           xhr.onload = () => {
+               listAllProduct = xhr.response;
+               console.log("LENGTH: " + listAllProduct.length)
+           }
+           xhr.send();
+
+          let searchBar = document.createElement("input");
+          searchBar.setAttribute("type", "text");
+          searchBar.setAttribute("id","addProductField");
+          searchBar.addEventListener("input", function(event) {
+
+              console.log(event.target.value.toLowerCase());
+              for(let x = 0;x <listAllProduct.length;x++){
+                if(listAllProduct[x].name.includes(event.target.value.toLowerCase())){
+                console.log("NEED : " + listAllProduct[x].name)
+                }
+              }
+          });
+          document.getElementById("mainOrderDiv").appendChild(searchBar)
+
+}
+function searchProductTest(){
+       document.getElementById("mainOrderDiv").appendChild(createButton("addProduct","Добавить", onClickAddButton))
 }
