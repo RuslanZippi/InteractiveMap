@@ -40,14 +40,15 @@
           </label>
 
 
-        <button id="CreateObject" class="buttonManager">Создание объекта</button>
-        <button id="uploadOrder" class="buttonManager">Ордер отгрузки</button>
+        <button id="CreateObject" class="buttonManager">Редактирование инструментов</button>
+        <button id="uploadOrder" class="buttonManager" onclick="createOrder()">Создать ордер отгрузки</button>
         <button id="replaceProduct" class="buttonManager" onclick="allProduct()">Редактирование товара</button>
     </div>
     <div id="managerTable"></div>
 
 </div>
 <script th:src="@{js/plugin.js}"></script>
+<script th:src="@{js/order.js}"></script>
 <script th:src="@{js/request.js}"></script>
 <script th:src="@{js/getId.js}"></script>
 <script th:src="@{js/controller.js}"></script>
