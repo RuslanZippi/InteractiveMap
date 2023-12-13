@@ -19,6 +19,7 @@ function createOrder() {
     orderIdDiv.appendChild(article);
     mainDiv.appendChild(orderIdDiv);
     mainDiv.appendChild(createDateDiv())
+    mainDiv.appendChild(createRecipientField())
     document.getElementById("mainDiv").appendChild(mainDiv);
 }
 
@@ -34,11 +35,42 @@ function createDateDiv(){
     dateDiv.setAttribute("class","orderDate");
     let date = document.createElement("input");
     date.setAttribute("type", "date");
-    let labelDate = document.createElement("label");
-    labelDate.innerText +=date;
+    date.setAttribute("id", "dateId");
 
+
+//    document.getElementById("orderDateDiv").addEventListener("change", function(){
+//    let input = this.value
+//    labelDate.innerText += input});
     dateDiv.appendChild(date);
-    dateDiv.appendChild(labelDate);
     console.log();
+    dateDiv.appendChild(crateDateButton());
     return dateDiv;
+}
+
+function crateDateButton(){
+     let dateButton = document.createElement("button");
+     dateButton.setAttribute("id","orderDateButton");
+     dateButton.setAttribute("class","buttonManager");
+     dateButton.innerText +="Сохранить";
+     dateButton.onclick = onClickDateButton;
+     return dateButton;
+}
+
+function onClickDateButton(){
+// сохранение ордера
+    console.log("Сохранение")
+}
+
+function createRecipientField(){
+// добавить css стиль
+    let field = document.createElement("p")
+    field.setAttribute("id","recipientFieldId");
+    field.innerText = "Получатель"
+    let text = document.createElement("input");
+    text.setAttribute("type", "text");
+    text.setAttribute("id","recipientTextId");
+
+    field.appendChild(text);
+
+    return field;
 }
