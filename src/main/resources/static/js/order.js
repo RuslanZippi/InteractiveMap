@@ -1,10 +1,10 @@
 function createOrder() {
     console.log(document.getElementById("mainDiv").className)
     let mainDiv;
-    if (document.getElementById("orderDiv") === null) {
+    if (document.getElementById("mainOrderDiv") === null) {
         mainDiv = document.createElement("div");
     } else {
-        document.getElementById("orderDiv").remove()
+        document.getElementById("mainOrderDiv").remove()
         mainDiv = document.createElement("div");
     }
     mainDiv.setAttribute("id", "mainOrderDiv");
@@ -19,7 +19,7 @@ function createOrder() {
     orderIdDiv.appendChild(article);
     mainDiv.appendChild(orderIdDiv);
     mainDiv.appendChild(createDateDiv())
-    document.getElementById("mainDiv").appendChild(mainDiv).appendChild();
+    document.getElementById("mainDiv").appendChild(mainDiv);
 }
 
 function getOrderId(){
