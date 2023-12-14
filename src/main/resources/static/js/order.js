@@ -79,14 +79,17 @@ function createRecipientField(){
 }
 function createOrderTableList(element){
     let table;
-        if (document.getElementById('tableAllProduct') === null) {
+    let thead ;
+    let tbody;
+        if (document.getElementById('tableOrderList') === null) {
             table = document.createElement('table');
-        }
-        table.setAttribute("id", "tableAllProduct");
+        table.setAttribute("id", "tableOrderList");
         table.setAttribute('class', 'tableStyle')
         table.setAttribute('display', 'inline')
-        let thead = document.createElement('thead');
-        let tbody = document.createElement('tbody');
+        thead = document.createElement('thead');
+        thead.setAttribute("id","theadID");
+        tbody = document.createElement('tbody');
+        tbody.setAttribute("id","tbodyID");
 
 
 
@@ -94,25 +97,40 @@ function createOrderTableList(element){
 
         let row_1 = document.createElement('tr');
         let heading_1 = document.createElement('th');
-        heading_1.innerHTML = "№";
+        heading_1.innerHTML = "id";
         let heading_2 = document.createElement('th');
         heading_2.innerHTML = "Название товара";
         let heading_3 = document.createElement('th');
         heading_3.innerHTML = "Количество";
-
-//        let heading_4 = document.createElement('th');
-//        heading_4.innerHTML = "Позиция";
-
         row_1.appendChild(heading_1);
 
-        row_1.appendChild(heading_2);
-        row_1.appendChild(heading_3);
-//        row_1.appendChild(heading_4);
-        thead.appendChild(row_1);
+                row_1.appendChild(heading_2);
+                row_1.appendChild(heading_3);
+                thead.appendChild(row_1);
+        }
+        else{
+
+        table = document.getElementById("tableOrderList");
+        thead = document.getElementById("theadID");
+        tbody = document.getElementById("tbodyID");
+        }
+
+
+
+
+        var row = document.createElement('tr');
+
+        let row_data_1 = document.createElement('td');
+        row_data_1.innerHTML = element.id;
+        let row_data_2 = document.createElement('td');
+        row_data_2.innerHTML = element.name;
+
+        row.appendChild(row_data_1);
+        row.appendChild(row_data_2);
+        tbody.appendChild(row)
 
         table.appendChild(thead);
         table.appendChild(tbody);
-
         document.getElementById('mainOrderDiv').appendChild(table);
 
 
@@ -203,14 +221,23 @@ function createButtonSearchElement(element){
        let button = document.createElement("button");
        //button.setAttribute("text",element.name);
        //button.setAttribute("class","buttonManager");
+        button.setAttribute("value",element.id + "_" + element.name)
         button.setAttribute("onclick", "onClickAddSearchElement(value)")
-        button.setAttribute("value",element.name)
         button.innerText = element.name;
        return button;
 }
 function onClickAddSearchElement(value){
     console.log(value)
-    //createOrderTableList();
+    //console.log(productname)
+    let element = new ElementP();
+    element.id = value.split("_")[0];
+    element.name = value.split("_")[1];
+    console.log(element.name);
+    createOrderTableList(element);
+}
+class ElementP{
+ name;
+ id;
 }
 function searchProductTest(){
        document.getElementById("mainOrderDiv").appendChild(createButton("addProduct","Добавить", onClickAddButton))
