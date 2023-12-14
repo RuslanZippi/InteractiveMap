@@ -1,13 +1,13 @@
 #managerDiv{
     position: relative;
-    width: 1200px;	height: 400px; /* Размеры */
+    width: 1200px;	height: 350px; /* Размеры */
     background: #eeeeee; /* Цвет фона */
     border: 3px solid #808080; /* Белая рамка */
     border-radius: 10px; /* Радиус скругления */
 }
 #mainOrderDiv{
     position: absolute;
-    width: 1200px;	height: 600px; /* Размеры */
+    width: 1200px;	height: 900px; /* Размеры */
     background: #eeeeee; /* Цвет фона */
     border: 3px solid #808080; /* Белая рамка */
     border-radius: 10px; /* Радиус скругления */

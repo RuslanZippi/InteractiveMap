@@ -77,6 +77,46 @@ function createRecipientField(){
 
     return field;
 }
+function createOrderTableList(element){
+    let table;
+        if (document.getElementById('tableAllProduct') === null) {
+            table = document.createElement('table');
+        }
+        table.setAttribute("id", "tableAllProduct");
+        table.setAttribute('class', 'tableStyle')
+        table.setAttribute('display', 'inline')
+        let thead = document.createElement('thead');
+        let tbody = document.createElement('tbody');
+
+
+
+
+
+        let row_1 = document.createElement('tr');
+        let heading_1 = document.createElement('th');
+        heading_1.innerHTML = "№";
+        let heading_2 = document.createElement('th');
+        heading_2.innerHTML = "Название товара";
+        let heading_3 = document.createElement('th');
+        heading_3.innerHTML = "Количество";
+
+//        let heading_4 = document.createElement('th');
+//        heading_4.innerHTML = "Позиция";
+
+        row_1.appendChild(heading_1);
+
+        row_1.appendChild(heading_2);
+        row_1.appendChild(heading_3);
+//        row_1.appendChild(heading_4);
+        thead.appendChild(row_1);
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+
+        document.getElementById('mainOrderDiv').appendChild(table);
+
+
+}
 function onClickAddButton(){
        let addLineDiv;
        if(document.getElementById("addLineDiv")===null){
@@ -111,6 +151,7 @@ function onClickAddButton(){
 
           searchBar.setAttribute("type", "text");
           searchBar.setAttribute("id","addProductField");
+          //let elementList = new Array();
           searchBar.addEventListener("input", function(event) {
 
           let elementList = new Array();
@@ -125,11 +166,12 @@ function onClickAddButton(){
               }
               printSearchElement(elementList);
           });
+          //printSearchElement(elementList);
           addLineDiv.appendChild(searchBar);
           document.getElementById("mainOrderDiv").appendChild(addLineDiv);
 
 }
-http://localhost:8080/product-cart?id=1
+
 function printSearchElement(elementList){
       let listElementDiv;
       if (document.getElementById("listElementDiv")!=null){
@@ -143,11 +185,12 @@ function printSearchElement(elementList){
       if(elementList.length <6){
       listElementDiv.appendChild(createButtonSearchElement(elementList[x]));
       listElementDiv.innerHTML +=  "<br>";
+      //listElementDiv.appendChild(createOrderTableList(elementList[x]));
       }
         // listElementDiv.innerHTML += elementList[x] + "<br>";
       }
 
-      document.getElementById("addLineDiv").appendChild(listElementDiv);
+      document.getElementById("mainOrderDiv").appendChild(listElementDiv);
 }
 function createLinkSearchElement(element){
     let link = document.createElement("a");
@@ -159,8 +202,15 @@ function createLinkSearchElement(element){
 function createButtonSearchElement(element){
        let button = document.createElement("button");
        //button.setAttribute("text",element.name);
+       //button.setAttribute("class","buttonManager");
+        button.setAttribute("onclick", "onClickAddSearchElement(value)")
+        button.setAttribute("value",element.name)
         button.innerText = element.name;
        return button;
+}
+function onClickAddSearchElement(value){
+    console.log(value)
+    //createOrderTableList();
 }
 function searchProductTest(){
        document.getElementById("mainOrderDiv").appendChild(createButton("addProduct","Добавить", onClickAddButton))
