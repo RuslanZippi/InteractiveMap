@@ -119,7 +119,7 @@ function onClickAddButton(){
               for(let x = 0;x <listAllProduct.length;x++){
                 if(listAllProduct[x].name.includes(event.target.value.toLowerCase())){
                 //console.log("NEED : " + listAllProduct[x].name)
-                elementList[index] = (listAllProduct[x].name);
+                elementList[index] = (listAllProduct[x]);
                 index++;
                 }
               }
@@ -129,7 +129,7 @@ function onClickAddButton(){
           document.getElementById("mainOrderDiv").appendChild(addLineDiv);
 
 }
-
+http://localhost:8080/product-cart?id=1
 function printSearchElement(elementList){
       let listElementDiv;
       if (document.getElementById("listElementDiv")!=null){
@@ -141,12 +141,26 @@ function printSearchElement(elementList){
       listElementDiv.setAttribute("id", "listElementDiv");
       for(let x = 0; x <elementList.length;x++){
       if(elementList.length <6){
-      listElementDiv.innerHTML += elementList[x] + "<br>";
+      listElementDiv.appendChild(createButtonSearchElement(elementList[x]));
+      listElementDiv.innerHTML +=  "<br>";
       }
         // listElementDiv.innerHTML += elementList[x] + "<br>";
       }
 
       document.getElementById("addLineDiv").appendChild(listElementDiv);
+}
+function createLinkSearchElement(element){
+    let link = document.createElement("a");
+    link.href = "/product-cart?id=" + element.id;
+    link.text = element.name;
+    return link;
+}
+
+function createButtonSearchElement(element){
+       let button = document.createElement("button");
+       //button.setAttribute("text",element.name);
+        button.innerText = element.name;
+       return button;
 }
 function searchProductTest(){
        document.getElementById("mainOrderDiv").appendChild(createButton("addProduct","Добавить", onClickAddButton))
