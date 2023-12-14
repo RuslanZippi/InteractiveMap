@@ -124,9 +124,14 @@ function createOrderTableList(element){
         row_data_1.innerHTML = element.id;
         let row_data_2 = document.createElement('td');
         row_data_2.innerHTML = element.name;
+        let row_data_3 = document.createElement('td');
+
+        let input = document.createElement("input");
+        row_data_3.appendChild(input);
 
         row.appendChild(row_data_1);
         row.appendChild(row_data_2);
+         row.appendChild(row_data_3);
         tbody.appendChild(row)
 
         table.appendChild(thead);
@@ -208,7 +213,7 @@ function printSearchElement(elementList){
         // listElementDiv.innerHTML += elementList[x] + "<br>";
       }
 
-      document.getElementById("mainOrderDiv").appendChild(listElementDiv);
+      document.getElementById("addLineDiv").appendChild(listElementDiv);
 }
 function createLinkSearchElement(element){
     let link = document.createElement("a");
