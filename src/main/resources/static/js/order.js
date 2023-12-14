@@ -78,6 +78,15 @@ function createRecipientField(){
     return field;
 }
 function onClickAddButton(){
+       let addLineDiv;
+       if(document.getElementById("addLineDiv")===null){
+       addLineDiv = document.createElement("div");
+       }
+       else{
+       document.getElementById("addLineDiv").remove()
+       addLineDiv = document.createElement("div");
+       }
+       addLineDiv.setAttribute("id","addLineDiv");
        let xhr = new XMLHttpRequest();
            let url = "/allProduct";
 
@@ -91,20 +100,53 @@ function onClickAddButton(){
            }
            xhr.send();
 
-          let searchBar = document.createElement("input");
+          let searchBar;
+          if(document.getElementById("addProductField")===null){
+          searchBar = document.createElement("input");
+          }
+          else{
+          document.getElementById("addProductField").remove
+          searchBar = document.createElement("input");
+          }
+
           searchBar.setAttribute("type", "text");
           searchBar.setAttribute("id","addProductField");
           searchBar.addEventListener("input", function(event) {
 
+          let elementList = new Array();
               console.log(event.target.value.toLowerCase());
+              let index = 0;
               for(let x = 0;x <listAllProduct.length;x++){
                 if(listAllProduct[x].name.includes(event.target.value.toLowerCase())){
-                console.log("NEED : " + listAllProduct[x].name)
+                //console.log("NEED : " + listAllProduct[x].name)
+                elementList[index] = (listAllProduct[x].name);
+                index++;
                 }
               }
+              printSearchElement(elementList);
           });
-          document.getElementById("mainOrderDiv").appendChild(searchBar)
+          addLineDiv.appendChild(searchBar);
+          document.getElementById("mainOrderDiv").appendChild(addLineDiv);
 
+}
+
+function printSearchElement(elementList){
+      let listElementDiv;
+      if (document.getElementById("listElementDiv")!=null){
+      document.getElementById("listElementDiv").remove()
+      listElementDiv = document.createElement("div");
+      }else{
+      listElementDiv = document.createElement("div");
+      }
+      listElementDiv.setAttribute("id", "listElementDiv");
+      for(let x = 0; x <elementList.length;x++){
+      if(elementList.length <6){
+      listElementDiv.innerHTML += elementList[x] + "<br>";
+      }
+        // listElementDiv.innerHTML += elementList[x] + "<br>";
+      }
+
+      document.getElementById("addLineDiv").appendChild(listElementDiv);
 }
 function searchProductTest(){
        document.getElementById("mainOrderDiv").appendChild(createButton("addProduct","Добавить", onClickAddButton))
