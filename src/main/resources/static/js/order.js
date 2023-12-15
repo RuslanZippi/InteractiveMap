@@ -1,7 +1,7 @@
 
 
 function createOrder() {
-    console.log(document.getElementById("mainDiv").className)
+
     let mainDiv;
     if (document.getElementById("mainOrderDiv") === null) {
         mainDiv = document.createElement("div");
@@ -39,11 +39,6 @@ function createDateDiv(){
     let date = document.createElement("input");
     date.setAttribute("type", "date");
     date.setAttribute("id", "dateId");
-
-
-//    document.getElementById("orderDateDiv").addEventListener("change", function(){
-//    let input = this.value
-//    labelDate.innerText += input});
     dateDiv.appendChild(date);
     console.log();
     dateDiv.appendChild(createButton("orderDateButton", "Сохранить",onClickDateButton));
@@ -91,10 +86,6 @@ function createOrderTableList(element){
         tbody = document.createElement('tbody');
         tbody.setAttribute("id","tbodyID");
 
-
-
-
-
         let row_1 = document.createElement('tr');
         let heading_1 = document.createElement('th');
         heading_1.innerHTML = "id";
@@ -115,14 +106,14 @@ function createOrderTableList(element){
         tbody = document.getElementById("tbodyID");
         }
 
-
-
-
-        var row = document.createElement('tr');
-
+        if(document.getElementById(element.id) === null){
+         var row = document.createElement('tr');
+                row.setAttribute("id", element.id);
         let row_data_1 = document.createElement('td');
+
         row_data_1.innerHTML = element.id;
         let row_data_2 = document.createElement('td');
+
         row_data_2.innerHTML = element.name;
         let row_data_3 = document.createElement('td');
 
@@ -137,6 +128,11 @@ function createOrderTableList(element){
         table.appendChild(thead);
         table.appendChild(tbody);
         document.getElementById('mainOrderDiv').appendChild(table);
+        }
+        else{
+        alert("Позиция уже добавлена")
+        }
+
 
 
 }
@@ -159,7 +155,7 @@ function onClickAddButton(){
 
            xhr.onload = () => {
                listAllProduct = xhr.response;
-               console.log("LENGTH: " + listAllProduct.length)
+
            }
            xhr.send();
 
@@ -178,7 +174,7 @@ function onClickAddButton(){
           searchBar.addEventListener("input", function(event) {
 
           let elementList = new Array();
-              console.log(event.target.value.toLowerCase());
+
               let index = 0;
               for(let x = 0;x <listAllProduct.length;x++){
                 if(listAllProduct[x].name.includes(event.target.value.toLowerCase())){
@@ -208,9 +204,7 @@ function printSearchElement(elementList){
       if(elementList.length <6){
       listElementDiv.appendChild(createButtonSearchElement(elementList[x]));
       listElementDiv.innerHTML +=  "<br>";
-      //listElementDiv.appendChild(createOrderTableList(elementList[x]));
       }
-        // listElementDiv.innerHTML += elementList[x] + "<br>";
       }
 
       document.getElementById("addLineDiv").appendChild(listElementDiv);
@@ -224,20 +218,16 @@ function createLinkSearchElement(element){
 
 function createButtonSearchElement(element){
        let button = document.createElement("button");
-       //button.setAttribute("text",element.name);
-       //button.setAttribute("class","buttonManager");
         button.setAttribute("value",element.id + "_" + element.name)
         button.setAttribute("onclick", "onClickAddSearchElement(value)")
         button.innerText = element.name;
        return button;
 }
 function onClickAddSearchElement(value){
-    console.log(value)
-    //console.log(productname)
     let element = new ElementP();
     element.id = value.split("_")[0];
     element.name = value.split("_")[1];
-    console.log(element.name);
+
     createOrderTableList(element);
 }
 class ElementP{
