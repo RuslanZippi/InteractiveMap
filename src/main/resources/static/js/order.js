@@ -55,10 +55,33 @@ function createButton(id,text,onclick){
 }
 
 function onClickDateButton(){
-// сохранение ордера
+let recipient = document.getElementById("recipientTextId");
+    if(recipient.value===""){
+        alert("Получатель не указан")
+    }
+    else{
+    console.log(recipient.value)}
+    if(document.getElementById('tableOrderList') === null){
+    alert("Товар не добавлен")
+    }
+    else{
     console.log("Сохранение")
+    let tBody = document.getElementById("tbodyID");
+    //console.log(tBody.getElementsByTagName("tr").length)
+    getCount()
+    }
+    //console.log("Сохранение")
 }
 
+function getCount(){
+ let tBody = document.getElementById("tbodyID");
+ let trList  = tBody.getElementsByTagName("tr");
+
+ for(let x = 0 ; x < trList.length;x++){
+
+    console.log(trList[x].getElementsByTagName("td")[2].children[0].value);
+ }
+}
 function createRecipientField(){
 // добавить css стиль
     let field = document.createElement("p")
@@ -118,6 +141,7 @@ function createOrderTableList(element){
         let row_data_3 = document.createElement('td');
 
         let input = document.createElement("input");
+        input.setAttribute("type","text");
         row_data_3.appendChild(input);
 
         row.appendChild(row_data_1);
@@ -170,7 +194,6 @@ function onClickAddButton(){
 
           searchBar.setAttribute("type", "text");
           searchBar.setAttribute("id","addProductField");
-          //let elementList = new Array();
           searchBar.addEventListener("input", function(event) {
 
           let elementList = new Array();
@@ -178,7 +201,6 @@ function onClickAddButton(){
               let index = 0;
               for(let x = 0;x <listAllProduct.length;x++){
                 if(listAllProduct[x].name.includes(event.target.value.toLowerCase())){
-                //console.log("NEED : " + listAllProduct[x].name)
                 elementList[index] = (listAllProduct[x]);
                 index++;
                 }
