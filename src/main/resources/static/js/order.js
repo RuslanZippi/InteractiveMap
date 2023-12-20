@@ -76,11 +76,27 @@ let recipient = document.getElementById("recipientTextId");
 function getCount(){
  let tBody = document.getElementById("tbodyID");
  let trList  = tBody.getElementsByTagName("tr");
-
+ let elementList = new Array()
  for(let x = 0 ; x < trList.length;x++){
+ let  element = new Element;
+ element.id = trList[x].getElementsByTagName("td")[0].innerHTML;
+ element.name = trList[x].getElementsByTagName("td")[1].innerHTML;
+ element.count = trList[x].getElementsByTagName("td")[2].children[0].value;
 
-    console.log(trList[x].getElementsByTagName("td")[2].children[0].value);
+//console.log("Id = " + trList[x].getElementsByTagName("td")[0].innerHTML)
+// console.log("Name = " + trList[x].getElementsByTagName("td")[1].innerHTML)
+// console.log("Count = " + trList[x].getElementsByTagName("td")[2].children[0].value)
+
+ elementList.push(element);
  }
+
+
+}
+
+class Element{
+    name;
+    id;
+    count;
 }
 function createRecipientField(){
 // добавить css стиль
