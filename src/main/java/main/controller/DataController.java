@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.dto.ProductCart;
+import main.dto.ProductOrder;
 import main.dto.ProductResponse;
 import main.dto.ResponseSaver;
 import main.dto.request.ProductList;
@@ -56,5 +57,11 @@ public class DataController {
     @GetMapping("/all")
     public ResponseEntity<List<ProductList>> getAllProduct(){
         return new ResponseEntity<>(service.getAllProductList(),HttpStatus.OK);
+    }
+
+    @PostMapping(value =  "/createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<String> createOrder(@RequestBody List<ProductOrder> list){
+        logger.info("Size list (create order) " + list.size());
+        return  new ResponseEntity<>("OK", HttpStatus.OK);
     }
 }

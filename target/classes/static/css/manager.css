@@ -1,0 +1,76 @@
+#managerDiv{
+    position: relative;
+    width: 1200px;	height: 350px; /* Размеры */
+    background: #eeeeee; /* Цвет фона */
+    border: 3px solid #808080; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+}
+#mainOrderDiv{
+    position: absolute;
+    width: 1200px;	height: 900px; /* Размеры */
+    background: #eeeeee; /* Цвет фона */
+    border: 3px solid #808080; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+    min-width: 1200px;
+    min-height: 600px;
+}
+.orderText{
+
+}
+.description{
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+}
+.dialogStyle{
+    background-color: #eeeeee;
+    border: 3px solid #8080;
+    border-radius: 10px;
+
+}
+.buttonManager{
+    font-size: 16px;
+    font-weight: 700;
+    padding: 3px 6px;
+    background: #eaeef1;
+    display:block;
+    width: 30%;
+    margin: 20px auto;
+    border-radius: 5px;
+    color: rgba(0,0,0,.6);
+    text-shadow: 0 1px 1px rgba(255,255,255,.7);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.2), inset 0 1px 2px rgba(255,255,255,.7);
+}
+.buttonManager:hover{
+    background: #cfcfcf;
+}
+.buttonManager:active{
+    background: grey;
+}
+#uploadPDF{
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+#uploadPDF + label{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 3px 6px;
+    background: #eaeef1;
+    display:block;
+
+    width: 30%;
+    margin: 20px auto;
+    border-radius: 5px;
+    color: rgba(0,0,0,.6);
+    text-shadow: 0 1px 1px rgba(255,255,255,.7);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.2), inset 0 1px 2px rgba(255,255,255,.7);
+    cursor: pointer;
+}
+#uploadPDF + label:hover{
+    background: #cfcfcf;
+}
+#uploadPDF + label:active{
+    background: grey;
+}
